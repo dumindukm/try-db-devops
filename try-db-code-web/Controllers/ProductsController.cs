@@ -16,6 +16,7 @@ namespace try_db_code_web.Controllers
 
         public ProductsController(WebshopContext context)
         {
+            // set context
             _context = context;
         }
 
