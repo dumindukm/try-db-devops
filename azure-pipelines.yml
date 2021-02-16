@@ -16,4 +16,8 @@ variables:
 steps:
 - task: MSBuild@1
   inputs:
-    solution: '**/*.sln'
+    solution: '**/Webshop_db.sqlproj'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/try-db-code-web.csproj'
