@@ -24,8 +24,8 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/try-db-code-web/bin/Debug/net5.0
-    artifactName: WebApp
+    artifactName: WebApp-code
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug
-    artifactName: WebApp
+    artifactName: WebApp-db
