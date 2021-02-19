@@ -28,9 +28,10 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo Write your commands here
-      "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150\sqlpackage.exe" action:script sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql
-      echo Hello world
+      "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130\sqlpackage.exe" ^
+      /action:script ^
+      /sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac ^
+      /outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug
