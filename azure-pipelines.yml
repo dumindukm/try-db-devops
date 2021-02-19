@@ -32,7 +32,7 @@ steps:
       /action:script ^
       /sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac ^
       /outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql ^
-      /TargetConnectionString:$(target-server-connection)
+      /TargetConnectionString:"$(target-server-connection)"
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug
