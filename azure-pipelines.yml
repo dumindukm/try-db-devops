@@ -21,6 +21,15 @@ steps:
   inputs:
     command: 'publish'
     projects: '**/try-db-code-web.csproj'
+- task: SqlAzureDacpacDeployment@1
+  inputs:
+    azureSubscription: '$(azure-subscription)'
+    AuthenticationType: 'connectionString'
+    ConnectionString: '$(target-server-connection)'
+    deployType: 'DacpacTask'
+    DeploymentAction: 'Publish'
+    DacpacFile: '$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac'
+    IpDetectionMethod: 'AutoDetect'
 - task: CmdLine@2
   inputs:
     script: |
