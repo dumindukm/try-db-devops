@@ -25,6 +25,12 @@ steps:
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/try-db-code-web/bin/Debug/net5.0/publish.zip
     artifactName: WebApp-code
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo Write your commands here
+      sqlpackage.exe action:script sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql
+      echo Hello world
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug
