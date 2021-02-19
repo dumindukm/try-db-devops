@@ -19,7 +19,7 @@ steps:
     solution: '**/Webshop_db.sqlproj'
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
+    command: 'publish'
     projects: '**/try-db-code-web.csproj'
 - task: PublishPipelineArtifact@1
   inputs:
