@@ -23,7 +23,7 @@ steps:
     projects: '**/try-db-code-web.csproj'
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: $(System.DefaultWorkingDirectory)/try-db-code-web/bin/Debug/net5.0
+    targetPath: $(System.DefaultWorkingDirectory)/try-db-code-web/bin/Debug/net5.0/publish.zip
     artifactName: WebApp-code
 - task: PublishPipelineArtifact@1
   inputs:
