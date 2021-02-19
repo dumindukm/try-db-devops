@@ -31,7 +31,8 @@ steps:
       "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130\sqlpackage.exe" ^
       /action:script ^
       /sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac ^
-      /outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql
+      /outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql ^
+      /TargetConnectionString:$(target-server-connection)
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug
