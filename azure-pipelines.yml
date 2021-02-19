@@ -29,7 +29,7 @@ steps:
   inputs:
     script: |
       echo Write your commands here
-      sqlpackage.exe action:script sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql
+      "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150\sqlpackage.exe" action:script sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql
       echo Hello world
 - task: PublishPipelineArtifact@1
   inputs:
