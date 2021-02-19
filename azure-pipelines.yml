@@ -21,19 +21,10 @@ steps:
   inputs:
     command: 'publish'
     projects: '**/try-db-code-web.csproj'
-- task: SqlAzureDacpacDeployment@1
-  inputs:
-    azureSubscription: '$(azure-subscription)'
-    AuthenticationType: 'connectionString'
-    ConnectionString: '$(target-server-connection)'
-    deployType: 'DacpacTask'
-    DeploymentAction: 'Publish'
-    DacpacFile: '$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac'
-    IpDetectionMethod: 'AutoDetect'
 - task: CmdLine@2
   inputs:
     script: |
-      "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130\sqlpackage.exe" ^
+      "c:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150\sqlpackage.exe" ^
       /action:script ^
       /sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac ^
       /outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql ^
