@@ -21,10 +21,6 @@ steps:
   inputs:
     command: 'publish'
     projects: '**/try-db-code-web.csproj'
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: $(System.DefaultWorkingDirectory)/try-db-code-web/bin/Debug/net5.0/publish.zip
-    artifactName: WebApp-code
 - task: CmdLine@2
   inputs:
     script: |
@@ -33,6 +29,10 @@ steps:
       /sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac ^
       /outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql ^
       /TargetConnectionString:"$(target-server-connection)"
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: $(System.DefaultWorkingDirectory)/try-db-code-web/bin/Debug/net5.0/publish.zip
+    artifactName: WebApp-code
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug
