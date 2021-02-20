@@ -23,7 +23,7 @@ steps:
     projects: '**/try-db-code-web.csproj'
 - task: AzurePowerShell@2
   inputs:
-    azureSubscription: '$(azure-subscription)'
+    ConnectedServiceNameARM: '$(azure-subscription)'
     ScriptPath: '$(System.DefaultWorkingDirectory)\deployment_scripts\SetAzureFirewallRule.ps1'
     ScriptArguments: '$(DbServerName) $(ResourceGroup)'
     azurePowerShellVersion: LatestVersion
@@ -37,7 +37,7 @@ steps:
       /TargetConnectionString:"$(target-server-connection)"
 - task: AzurePowerShell@2
   inputs:
-    azureSubscription: '$(azure-subscription)'
+    ConnectedServiceNameARM: '$(azure-subscription)'
     ScriptPath: '$(System.DefaultWorkingDirectory)\deployment_scripts\RemoveAzureFirewallRule.ps1'
     ScriptArguments: '$(DbServerName) $(ResourceGroup)'
     azurePowerShellVersion: LatestVersion
