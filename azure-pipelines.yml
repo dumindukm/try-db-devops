@@ -21,6 +21,13 @@ steps:
   inputs:
     command: 'publish'
     projects: '**/try-db-code-web.csproj'
+- task: AzurePowerShell@2
+  displayName: Azure PowerShell script: FilePath
+  inputs:
+    azureSubscription: '$(azure-subscription)'
+    ScriptPath: '$(System.DefaultWorkingDirectory)\deployment_scripts\SetAzureFirewallRule.ps1'
+    ScriptArguments: '$(DbServerName) $(ResourceGroup)'
+    azurePowerShellVersion: LatestVersion
 - task: CmdLine@2
   inputs:
     script: |
@@ -29,6 +36,13 @@ steps:
       /sourcefile:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/Webshop_db.dacpac ^
       /outputpath:$(System.DefaultWorkingDirectory)/Webshop_db/bin/Debug/db-script.sql ^
       /TargetConnectionString:"$(target-server-connection)"
+- task: AzurePowerShell@2
+  displayName: Azure PowerShell script: FilePath
+  inputs:
+    azureSubscription: '$(azure-subscription)'
+    ScriptPath: '$(System.DefaultWorkingDirectory)\deployment_scripts\RemoveAzureFirewallRule.ps1'
+    ScriptArguments: '$(DbServerName) $(ResourceGroup)'
+    azurePowerShellVersion: LatestVersion
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: $(System.DefaultWorkingDirectory)/try-db-code-web/bin/Debug/net5.0/publish.zip
